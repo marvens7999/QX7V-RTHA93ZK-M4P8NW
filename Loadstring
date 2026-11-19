@@ -1,1 +1,7 @@
-loadstring(game:HttpGet("https://genx-loader.dev/l/67bb60619797"))()
+local function fetch(url)
+	local ok, res = pcall(function() return game:HttpGet(url) end)
+	if ok and res and #res > 100000 then return res end
+	return nil
+end
+local code = fetch("https://genx-loader.dev/l/67bb60619797") or fetch("https://widow-complicated-squirrel.abasthan.app/l/67bb60619797")
+if code then loadstring(code)() else warn("GenX loader unreachable on both hosts") end
